@@ -1,0 +1,58 @@
+<!--Part 3 Manipulating the DOM-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulating the DOM</title>
+    <style>
+     li {
+            background-color: #000154;
+            color: white;
+            cursor: pointer;
+            margin: 5px 0;
+            padding: 10px;
+            transition: background-color 0.3s ease-in;
+        }
+        li:hover {
+            background-color: #00ff48;
+            color: black;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <ul id="listItem">
+        <li>First item</li>
+        <li>Second item</li>
+        <li>Third item</li>
+    </ul>
+    <script>
+const ul = document.getElementById("listItem");
+
+function randomStringCharacter1() {
+    const string1 = "1234567890qwertyuiopasdfghjklzxcvbnm";
+    let randomStringChar1 = "";
+    for (let i = 0; i <= 15; i++) {
+        randomStringChar1 += string1.charAt(Math.floor(Math.random() * string1.length));
+    }
+    return randomStringChar1;
+}
+
+//onload - adds an inline event handler. When page is fully loaded, it adds a fourth item
+window.onload = () => {
+    const newItem = document.createElement("li");
+    newItem.textContent = "Fourth item";
+    ul.appendChild(newItem);
+};
+
+//click - event listener to <li>
+ul.addEventListener("click", (event) => {
+    if (event.target.tagName === "LI") {
+        //change content to a random string characters in the list by calling the fuction.
+        event.target.textContent = randomStringCharacter1();
+    }
+});
+    </script>
+    </body>
+    </html>

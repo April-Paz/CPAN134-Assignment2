@@ -1,0 +1,45 @@
+<!--Part 2 Event Handling-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handling</title>
+    <style>
+          button {
+            background-color: #000000;
+            color: white;
+            cursor: pointer;
+            margin: 5px 0;
+            padding: 10px;
+            transition: background-color 0.3s ease-in;
+        }
+        button:hover {
+            color: black;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <button id="btn-click">Click Me!</button>
+
+    <script>
+ //Function to get a random colour.
+ function randomColour1() {
+    const red = Math.floor(Math.random() * 256); 
+    const green = Math.floor(Math.random() * 256); 
+    const blue = Math.floor(Math.random() * 256); 
+    return `rgb(${red}, ${green}, ${blue})`;
+}
+
+const button = document.getElementById("btn-click");
+
+//This is the click event listener.
+button.addEventListener("click", () => {
+    const randomRGB = randomColour1(); //We catch the return from randomColour method into a variable.
+    button.style.backgroundColor = randomRGB; //This is so I can apply the random colour to the button.
+    alert("Button clicked!");
+});
+    </script>
+</body>
+</html>
