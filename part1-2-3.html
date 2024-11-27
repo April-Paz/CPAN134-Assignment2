@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handling</title>
+    <style>
+/* -----------STYLE: Part 2 Event Handling------------------- */
+        button {
+            background-color: #000000;
+            color: white;
+            cursor: pointer;
+            margin: 5px 0;
+            padding: 10px;
+            transition: background-color 0.3s ease-in;
+        }
+        button:hover {
+            color: black;
+            transform: scale(1.1);
+        }
+
+/* -----------STYLE: Part 3 Manipulating the DOM------------- */        
+        li {
+            background-color: #000154;
+            color: white;
+            cursor: pointer;
+            margin: 5px 0;
+            padding: 10px;
+            transition: background-color 0.3s ease-in;
+        }
+        li:hover {
+            background-color: #00ff48;
+            color: black;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+
+<!--------------Part 2 Event Handling----------------------->
+    <button id="btn-click">Click Me!</button>
+    <script src="script.js"></script>
+
+<!--------------Part 3 Manipulating the DOM----------------->
+    <ul id="listItem">
+        <li>First item</li>
+        <li>Second item</li>
+        <li>Third item</li>
+    </ul>
+
+<script>
+//-------------JAVASCRIPTS: PART 1, PART 2, PART 3-----------------------------------
+
+//Part 1 Javascript Basics
+
+//While Loop will test the conditions of input. The input must be a positive number.
+function calculateArea(width, height) {
+    while (width <= 0) { 
+        width = prompt("Must be a positive number. Enter width: ");
+    }
+
+    while (height <= 0) {
+        height = prompt("Must be a positive number. Enter height:");
+    }
+
+    const area = width * height;
+    console.log(`Area of rectangle: ${area}`);
+    return area;
+}
+
+//Call the methods
+calculateArea(5, 3);
+calculateArea(10, 7); 
+//---------------------------------------------------------------------------------------
+
+//Part 2 Event Handling
+
+ //Function to get a random colour.
+ function randomColour1() {
+    const red = Math.floor(Math.random() * 256); 
+    const green = Math.floor(Math.random() * 256); 
+    const blue = Math.floor(Math.random() * 256); 
+    return `rgb(${red}, ${green}, ${blue})`;
+}
+
+const button = document.getElementById("btn-click");
+
+//This is the click event listener.
+button.addEventListener("click", () => {
+    const randomRGB = randomColour1(); //We catch the return from randomColour method into a variable.
+    button.style.backgroundColor = randomRGB; //This is so I can apply the random colour to the button.
+    alert("Button clicked!");
+});
+
+//---------------------------------------------------------------------------------------
+
+//Part 3 Manipulating the DOM
+
+const ul = document.getElementById("listItem");
+
+function randomStringCharacter1() {
+    const string1 = "1234567890qwertyuiopasdfghjklzxcvbnm";
+    let randomStringChar1 = "";
+    for (let i = 0; i <= 15; i++) {
+        randomStringChar1 += string1.charAt(Math.floor(Math.random() * string1.length));
+    }
+    return randomStringChar1;
+}
+
+// onload - adds an inline event handler when page is fully loaded
+window.onload = () => {
+    const newItem = document.createElement("li");
+    newItem.textContent = "Fourth item";
+    ul.appendChild(newItem);
+};
+
+// click - event listener to <li>
+ul.addEventListener("click", (event) => {
+    if (event.target.tagName === "LI") {
+        // change content to a random string characters in the list by calling the fuction.
+        event.target.textContent = randomStringCharacter1();
+    }
+});
+</script>
+</body>
+</html>

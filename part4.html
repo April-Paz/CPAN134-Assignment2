@@ -1,0 +1,66 @@
+<!--Part 4 CSS Box Model-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Box Model</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="div1">Try And Click Me!</div>
+    
+    <script>
+//Part 4 CSS Box Model
+const div = document.getElementById("div1");
+
+//Function to generate a random color for background
+    function randomColor2() {
+        const red = Math.floor(Math.random() * 256);
+        const green = Math.floor(Math.random() * 256);
+        const blue = Math.floor(Math.random() * 256);
+        return `rgb(${red}, ${green}, ${blue})`;
+    }
+
+//Function to generate a random color for box shadow
+function randomColorShadow2() {
+    const red = Math.floor(Math.random() * 256);
+    const green = Math.floor(Math.random() * 256);
+    const blue = Math.floor(Math.random() * 256);
+    return `10px 10px 15px rgb(${red}, ${green}, ${blue})`; // Random box shadow color
+}
+
+//Function to move the div to a random position within the body
+    function translateDiv1() {
+        const X = window.innerWidth - div.offsetWidth;
+        const Y = window.innerHeight - div.offsetHeight;
+        const randomX = Math.floor(Math.random() * X);
+        const randomY = Math.floor(Math.random() * Y);
+
+        div.style.left = `${randomX}px`;
+        div.style.top = `${randomY}px`;
+    }
+
+//Change the background color on click and move the div
+    div.addEventListener('click', () => {
+        div.style.backgroundColor = randomColor2();
+        div.style.color = randomColor2();
+
+        translateDiv1();
+     });
+
+//Change border and box shadow color on hover. Also, changes the size
+    div.addEventListener("mouseover", () => {
+        div.style.borderColor = "yellow";
+        div.style.transform = 'scale(0.55)';
+        div.style.boxShadow = randomColorShadow2();
+    });
+
+//Reset border color and scale on mouse out
+    div.addEventListener("mouseout", () => {
+        div.style.borderColor = "black";
+        div.style.transform = 'scale(1)';
+    });
+    </script>
+</body>
+</html>
