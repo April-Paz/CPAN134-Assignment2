@@ -32,13 +32,13 @@ function randomColorShadow2() {
 
 //Function to move the div to a random position within the body
     function translateDiv1() {
-        const X = window.innerWidth - div.offsetWidth;
-        const Y = window.innerHeight - div.offsetHeight;
-        const randomX = Math.floor(Math.random() * X);
-        const randomY = Math.floor(Math.random() * Y);
+        const x = window.innerWidth - div.offsetWidth;
+        const y = window.innerHeight - div.offsetHeight;
+        const positionX = Math.floor(Math.random() * x);
+        const positionY = Math.floor(Math.random() * y);
 
-        div.style.left = `${randomX}px`;
-        div.style.top = `${randomY}px`;
+        div.style.left = `${positionX}px`;
+        div.style.top = `${positionY}px`;
     }
 
 //Change the background color on click and move the div
